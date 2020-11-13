@@ -25,19 +25,19 @@ class Firewall (object):
     fm = of.ofp_flow_mod()
     fm.match.dl_type = 0x0800
     fm.match.nw_proto = 1
-    fm.match.priority = 3
+    fm.priority = 3
     fm.actions.append(of.ofp_action_output(port = of.OFPP_FLOOD))
     self.connection.send(fm)
 
     fm = of.ofp_flow_mod()
     fm.match.dl_type = 0x0806
-    fm.match.priority = 2
+    fm.priority = 2
     fm.actions.append(of.ofp_action_output(port = of.OFPP_FLOOD))
     self.connection.send(fm)
 
     fm = of.ofp_flow_mod()
     fm.match.dl_type = 0x0800
-    fm.match.priority = 1
+    fm.priority = 1
     self.connection.send(fm)
 
   def _handle_PacketIn (self, event):
